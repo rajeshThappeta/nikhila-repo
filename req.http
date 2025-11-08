@@ -17,3 +17,7 @@ Content-Type: application/json
     "password":"ravi"
     
 }
+
+### req for protected route
+GET http://localhost:8080/user-api/test
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY5MGExNWU2MWRiNTc0YmI5MTMzYjgyMSIsInVzZXJuYW1lIjoicmF2aSIsInBhc3N3b3JkIjoiJDJiJDEyJHEzUHAveHBDTlRWL3IxNUN1ZEFFMWVXdWQxOU5lSS82VndNLy8uOUk2MC93MTRaZzdNOGxPIiwiZW1haWwiOiJyYXZpQG1haWwuY29tIiwiY3JlYXRlZEF0IjoiMjAyNS0xMS0wNFQxNTowNDowNi45ODhaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0wNFQxNTowNDowNi45ODhaIn0sImlhdCI6MTc2MjU3ODAwNiwiZXhwIjoxNzYyNTc4MDI2fQ.XFZdAPyrDD_ldPPaY_6KseWZVes8Y5eJC0xlUehBSOc; Path=/; HttpOnly; Secure; SameSite=None

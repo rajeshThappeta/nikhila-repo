@@ -4,6 +4,7 @@ export const useRoute = exp.Router();
 import { hash ,compare} from "bcryptjs";
 import { UserModel } from "../models/UserModel.js";
 import pkg from 'jsonwebtoken'
+import { verifyToken } from "../middlewares/verifyToken.js";
 const {sign}=pkg;
 
 //API routes
@@ -44,11 +45,25 @@ useRoute.post("/user-login",async(req,res)=>{
         }else{
             //create    a token
                let signedToken= sign({user:userObj},'abcdef',{expiresIn:20})
+               //send token as httpOnly
+               res.cookie("token",signedToken,{
+                    httpOnly:true,//it can be accessible only by the sever
+                    secure:true,
+                    sameSite:"none"
+
+               })
             //send res
-            res.json({message:"user login success",token:signedToken,payload:userObj})
+            res.json({message:"user login success",payload:userObj})
         }
     }
 
 })   
+
+//PUBLIC ROUTE - can be accessible by any user
+//PROTECTED ROUTES - Can be accessible by authenticated user only
+//create a middleware that verify user authentication
+useRoute.get("/test",verifyToken,(req,res)=>{
+    res.json({message:"this is protected route"})
+})
 
 

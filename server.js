@@ -2,6 +2,7 @@
 import exp from 'express'
 import {connect} from 'mongoose'
 import { useRoute } from './routes/userRoutes.js'
+import cookieParser from 'cookie-parser'
 
 const app=exp()
 
@@ -20,6 +21,8 @@ connect(dbUrl)
 
 //body parser middleware
 app.use(exp.json())
+//use cookie parser middleware
+app.use(cookieParser())
 app.use("/user-api",useRoute )
 
 //error handling middleware
