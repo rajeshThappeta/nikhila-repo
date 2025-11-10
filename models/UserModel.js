@@ -8,7 +8,8 @@ const userSchema=new Schema({
     },
     password:{
         type:String,
-        required:true
+        required:true,
+        minLength:[4,'min length of password is 4']
     },
     email:{
         type:String,
@@ -20,7 +21,6 @@ const userSchema=new Schema({
     timestamps:true,
     strict:"throw"
 })
-
 
 //create model
 export const UserModel=model("user",userSchema)

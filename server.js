@@ -1,8 +1,9 @@
 //create http server
 import exp from 'express'
 import {connect} from 'mongoose'
-import { useRoute } from './routes/userRoutes.js'
+import { userRoute } from './routes/userRoutes.js'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 
 const app=exp()
 
@@ -21,9 +22,13 @@ connect(dbUrl)
 
 //body parser middleware
 app.use(exp.json())
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}))
 //use cookie parser middleware
 app.use(cookieParser())
-app.use("/user-api",useRoute )
+app.use("/user-api",userRoute)
 
 //error handling middleware
 app.use((err,req,res,next)=>{

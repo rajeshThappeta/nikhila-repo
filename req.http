@@ -1,10 +1,14 @@
+### Read user
+GET http://localhost:8080/user-api/user/690a15e61db574bb9133b821
+
+###
 POST http://localhost:8080/user-api/user
 Content-Type: application/json
 
 {
-    "username":"ravi",
-    "password":"ravi",
-    "email":"ravi@mail.com"
+    "username":"test2",
+    "password":"test2",
+    "email":"test2@mail.com"
 }
 
 
