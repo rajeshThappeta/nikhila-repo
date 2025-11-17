@@ -59,6 +59,18 @@ userRoute.post("/user-login", async (req, res) => {
   }
 });
 
+
+//user logout
+userRoute.get('/logout',async(req,res)=>{
+  console.log("first")
+  res.clearCookie("token", {
+        httpOnly: true, //it can be accessible only by the sever
+        secure: true,
+        sameSite: "none",
+      });
+    res.status(200).json({message:"logout success"})
+})
+
 //route to read user
 userRoute.get("/user/:userId", async (req, res) => {
   let uid = req.params.userId;
